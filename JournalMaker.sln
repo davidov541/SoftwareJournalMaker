@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JournalMaker", "JournalMaker\JournalMaker.csproj", "{3B59614B-98BE-4D4E-80AA-C42445CD8534}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JournalMakerNewUI", "JournalMakerNewUI\JournalMakerNewUI.csproj", "{FDD92753-A31B-4CAC-9555-F2370A0F2B46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B59614B-98BE-4D4E-80AA-C42445CD8534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B59614B-98BE-4D4E-80AA-C42445CD8534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B59614B-98BE-4D4E-80AA-C42445CD8534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B59614B-98BE-4D4E-80AA-C42445CD8534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD92753-A31B-4CAC-9555-F2370A0F2B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD92753-A31B-4CAC-9555-F2370A0F2B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD92753-A31B-4CAC-9555-F2370A0F2B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD92753-A31B-4CAC-9555-F2370A0F2B46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

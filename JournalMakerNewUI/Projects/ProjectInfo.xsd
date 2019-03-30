@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ProjectInfo"
+    targetNamespace="http://tempuri.org/ProjectInfo.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ProjectInfo.xsd"
+    xmlns:mstns="http://tempuri.org/ProjectInfo.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Project" type="ProjectType"></xs:element>
+
+  <xs:complexType name="ProjectType">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="Developer" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="Language" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="CurrentStage" type="MappedNumericType" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="SourceFile" type="xs:string" maxOccurs="unbounded" minOccurs="0" />
+      <xs:element name="Estimation" type="EstimationType" maxOccurs="1" minOccurs="1" />
+      <xs:element name="Logs" type="LogType" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="BugReports" type="BugReportType" maxOccurs="1" minOccurs="1"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LogType">
+    <xs:sequence>
+      <xs:element name="Log" type="SingleLogType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SingleLogType">
+    <xs:sequence>
+      <xs:element name="Date" type="xs:date" maxOccurs="1" minOccurs="1" />
+      <xs:element name="Duration" type="xs:float" maxOccurs="1" minOccurs="1" />
+      <xs:element name="InterruptionDuration" type="xs:float" maxOccurs="1" minOccurs="1" />
+      <xs:element name="CodeSizeDifference" type="xs:decimal" maxOccurs="1" minOccurs="1" />
+      <xs:element name="DevelopmentStage" type="MappedNumericType" maxOccurs="1" minOccurs="1" />
+      <xs:element name="Comments" type="xs:string" maxOccurs="1" minOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BugReportType">
+    <xs:sequence>
+      <xs:element name="BugReport" type="SingleBugReportType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SingleBugReportType">
+    <xs:sequence>
+      <xs:element name="Date" type="xs:date" maxOccurs="1" minOccurs="1" />
+      <xs:element name="Type" type="MappedNumericType" maxOccurs="1" minOccurs="1" />
+      <xs:element name="InjectedPhase" type="MappedNumericType" maxOccurs="1" minOccurs="1" />
+      <xs:element name="FixPhase" type="MappedNumericType" maxOccurs="1" minOccurs="1" />
+      <xs:element name="FixTime" type="xs:float" maxOccurs="1" minOccurs="1" />
+      <xs:element name="InterruptionDuration" type="xs:float" maxOccurs="1" minOccurs="1" />
+      <xs:element name="ReferenceBug" type="xs:decimal" maxOccurs="1" minOccurs="1" />
+      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MappedNumericType">
+    <xs:sequence>
+      <xs:element name="ReadableString" type="xs:string" maxOccurs="1" minOccurs="1" />
+      <xs:element name="Numeric" type="xs:decimal" maxOccurs="1" minOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EstimationType">
+    <xs:sequence>
+      <xs:element name="Estimation" type="SingleEstimationType" maxOccurs="unbounded" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SingleEstimationType">
+    <xs:sequence>
+      <xs:element name="Stage" type="xs:string" maxOccurs="1" minOccurs="1" />
+      <xs:element name="TimeEst" type="xs:decimal" maxOccurs="1" minOccurs="1" />
+      <xs:element name="LOCEst" type="xs:decimal" maxOccurs="1" minOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

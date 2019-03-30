@@ -1,0 +1,92 @@
+﻿<Window x:Class="JournalMakerNewUI.NewBug"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:swf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+    xmlns:avalon="http://schemas.AvalonControls/AvalonControlsLibrary/Controls"
+    xmlns:updown="clr-namespace:CustomControlLibrary;assembly=CustomControlLibrary"
+    Title="Edit Entry" Height="315" Width="590"
+    DataContext="{StaticResource xmlDataProvider}"
+    Closing="OnClosing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="125" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="Auto" MinWidth="75" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" MinHeight="32" />
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0">
+           Date:
+        </Label>
+        <TextBox x:Name="txtDate" Visibility="Collapsed" Text="{Binding XPath=Date/text(), Mode=TwoWay}" />
+        <avalon:DateTimePicker x:Name="dpDate" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Margin="10, 0, 0, 0"
+                           DateTimeSelected="{Binding XPath=Date/text(), Mode=TwoWay}" />
+        <Label HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0">
+            Type Code:
+        </Label>
+        <Button x:Name="btnGetTypeCode" Grid.Column="2" Grid.Row="2" Click="btnGetTypeCode_Click">
+            Legend
+        </Button>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtTypeCode" Margin="10, 0, 0, 0" Text="{Binding XPath=Type/Numeric/text(), Mode=TwoWay}" />
+        <Label HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0">
+            Injected Stage:
+        </Label>
+        <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="cboInjStage" Margin="10, 0, 0, 0" Width="150"
+                  ItemsSource="{Binding Source={StaticResource xmlConfigProvider}, XPath=/Configuration/Stages/Stage/text()}"
+                  SelectedIndex="{Binding XPath=InjectedPhase/Numeric, Mode=TwoWay}" />
+        <Label HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0">
+            Fix Stage:
+        </Label>
+        <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" x:Name="cboFixStage" Margin="10, 0, 0, 0" Width="150"
+                  ItemsSource="{Binding Source={StaticResource xmlConfigProvider}, XPath=/Configuration/Stages/Stage/text()}"
+                  SelectedIndex="{Binding XPath=FixPhase/Numeric, Mode=TwoWay}" />
+        <Label HorizontalAlignment="Right" Grid.Row="5" Grid.Column="0">
+            Fix Duration (Hours):
+        </Label>
+        <updown:NumericUpDown x:Name="udFixDuration" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Value="{Binding XPath=FixTime/text(), Mode=TwoWay}" 
+                              HorizontalAlignment="Left" Margin="10, 0, 0, 0" DecimalPlaces="2" Minimum="0" 
+                              VerticalContentAlignment="Top" Padding="100" Change="0.25"/>
+        <Button x:Name="btnStart" Grid.Row="5" Grid.RowSpan="2" Grid.Column="2" VerticalAlignment="Center" 
+                HorizontalAlignment="Center" Margin="10, 10, 10, 10" Click="btnStart_Click">
+            <Image Source="Images/Play.png"></Image>
+        </Button>
+        <Button x:Name="btnPause" Grid.Row="5" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" 
+                HorizontalAlignment="Center" Margin="10, 10, 10, 10" Click="btnPause_Click" >
+            <Image x:Name="imgPause" Source="Images/Pause.png" />
+        </Button>
+        <Button x:Name="btnStop" Grid.Row="5" Grid.RowSpan="2" Grid.Column="4" VerticalAlignment="Center" 
+                HorizontalAlignment="Center" Margin="10, 10, 10, 10" Click="btnStop_Click" >
+            <Image Source="Images/Stop.png"></Image>
+        </Button>
+        <Label HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0">
+            Interruption Duration (Minutes):
+        </Label>
+        <updown:NumericUpDown x:Name="udIntDuration" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4"
+                              Value="{Binding XPath=InterruptionDuration/text(), Mode=TwoWay}" 
+                              HorizontalAlignment="Left" Margin="10, 0, 0, 0" DecimalPlaces="0" Minimum="0" 
+                              VerticalContentAlignment="Top" Padding="100" Change="1"/>
+        <Label HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0">
+            Comments:
+        </Label>
+        <TextBox Grid.Column="1" Grid.Row="7" Grid.RowSpan="2" Grid.ColumnSpan="4" Margin="10, 0, 0, 0" TextWrapping="Wrap" x:Name="txtDesc" 
+                 VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Text="{Binding XPath=Comments/text(), Mode=TwoWay}"/>
+        <Button Grid.Column="3" Grid.Row="9" HorizontalAlignment="Right" Width="60" Margin="5" Click="OK_Click">
+            OK
+        </Button>
+        <Button Grid.Column="4" Grid.Row="9" HorizontalAlignment="Right" Width="60" Margin="5" Click="Cancel_Click">
+            Cancel
+        </Button>
+    </Grid>
+</Window>

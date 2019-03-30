@@ -1,0 +1,10 @@
+﻿<Application x:Class="JournalMakerNewUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="Main.xaml">
+    <Application.Resources>
+        <XmlDataProvider x:Key="xmlConfigProvider" Source="Configuration/Configuration.xml" XPath="/Configuration/Stages"
+                         IsAsynchronous="False" IsInitialLoadEnabled="True" />
+        <XmlDataProvider x:Key="xmlDataProvider" XPath="/Project/Logs" IsAsynchronous="False" IsInitialLoadEnabled="True" />
+    </Application.Resources>
+</Application>

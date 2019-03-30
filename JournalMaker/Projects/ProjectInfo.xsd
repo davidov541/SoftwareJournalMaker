@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ProjectInfo"
+    targetNamespace="http://tempuri.org/ProjectInfo.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ProjectInfo.xsd"
+    xmlns:mstns="http://tempuri.org/ProjectInfo.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="Project" type="ProjectType"></xs:element>
+
+  <xs:complexType name="ProjectType">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="CurrentStage" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="CurrentStatus" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="Logs" type="LogType" maxOccurs="1" minOccurs="1"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LogType">
+    <xs:sequence>
+      <xs:element name="Log" type="SingleLogType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SingleLogType">
+    <xs:sequence>
+      <xs:element name="Date" type="xs:date" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="Description" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="Duration" type="xs:decimal" maxOccurs="1" minOccurs="1"></xs:element>
+      <xs:element name="DevelopmentStage" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
